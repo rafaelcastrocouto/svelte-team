@@ -57,10 +57,16 @@
 </script>
 
 <div class="members">
+  
   {#await data then users}
     {#each users as user}
+      
       <div class="member">
-        <a href="{user.html_url}" target="_blank"><img src={user.avatar_url}></a>
+        
+        <a href="{user.html_url}" target="_blank">
+          <img src={user.avatar_url} alt="user avatar" class="user_avatar">
+        </a>
+        
         <h4>
         {#if user.twitter_username} 
           <a href="https://twitter.com/{user.twitter_username}" target="_blank">@{user.twitter_username}</a> 
@@ -68,6 +74,7 @@
           <a href="{user.html_url}" target="_blank">{user.login}</a>
         {/if}
         </h4>
+        
         {#if user.blog} 
           <p>
             {#if user.blog.startsWith('http')}
@@ -77,29 +84,26 @@
             {/if}
           </p>
         {/if}
+        
         {#if user.company} <p>{user.company}</p> {/if}
         {#if user.location} <p>{user.location}</p> {/if}
         {#if user.bio} <p>{user.bio}</p> {/if}
+        
       </div>
+      
     {/each}
   {/await}
+  
 </div>
 
 <style>
-  img {
+  .user_avatar {
     border-radius: 50%;
     margin: 3rem 0 0;
     height: 6rem;
     width: 6rem;
   }
-  a {
-    color: var(--orange);
-  }
-  h4 {
-    color: var(--orange);
-    margin: 0.5rem 0 0;
-  }
-  p {
+  .member p {
     margin: 0.5rem 0 0;
   }
 </style>

@@ -1,6 +1,16 @@
 /node_modules/
+/build
 /dist/
 /.vscode/
+/.svelte-kit
+/package
 .DS_Store
 replit.nix
 .replit
+env
+.env.*
+!.env.example
+.vercel
+.output
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
