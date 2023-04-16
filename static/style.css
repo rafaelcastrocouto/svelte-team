@@ -33,19 +33,39 @@ a:visited {
   color: var(--light-orange);
 }
 
+.container {
+  margin-top: 5rem;
+}
+
+form {
+  display: grid;
+  place-content: center;
+  margin-top: 1rem;
+}
 label {
   display: block;
+  margin-bottom: 0.2rem;
 }
-
+input {
+  display: block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
 button {
+  display: block;
   cursor: pointer;
+  background: white;
+  border: 2px solid var(--dark-grey);
+  padding: 1rem 3rem;
+  margin-top: 1rem;
 }
-
-.container {
-  margin-top: 3rem;
+button:hover {
+  background: #eee;
+  text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {
+  
   body {
     background: var(--dark-grey);
     color: white;
@@ -53,4 +73,13 @@ button {
   .logo_img {
     filter: invert(0.88)
   }
+  button {
+    background: var(--dark-grey);
+    border: 2px solid white;
+    color: white;
+  }
+  button:hover {
+    background: #000;
+  }
+  
 }

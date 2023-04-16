@@ -16,7 +16,7 @@
 <style>
 
   .footer {
-    margin-top: 4em;
+    margin-top: 5em;
   }
 
   .footer_img {
