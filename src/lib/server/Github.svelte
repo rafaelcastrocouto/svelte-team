@@ -68,7 +68,7 @@
           <a href="{user.html_url}" target="_blank">{user.login}</a>
         {/if}
         </h4>
-        {#if user.blog} <p><a href="{user.blog}" target="_blank">{user.blog}</a></p> {/if}
+        {#if user.blog} <p><a href="//{user.blog}" target="_blank">{user.blog}</a></p> {/if}
         {#if user.company} <p>{user.company}</p> {/if}
         {#if user.location} <p>{user.location}</p> {/if}
         {#if user.bio} <p>{user.bio}</p> {/if}
