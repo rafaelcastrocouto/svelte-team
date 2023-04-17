@@ -1,17 +1,54 @@
-<script>
-  let message = 'You are not logged in.';
+<script lang="ts">
+  import { onMount } from 'svelte'
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+  import { loginSession } from '../../stores'
+  import { initializeGoogleAccounts, renderGoogleButton } from '$lib/google'
+
+  let message: string
+  const credentials: Credentials = {
+    email: '',
+    password: ''
+  }
+  
+  async function login() {
+    message = ''
+    const form = <HTMLFormElement> document.getElementById('signIn')
+    if (form.checkValidity()) {
+      try {
+        await loginLocal(credentials)
+      } catch (err) {
+        if (err instanceof Error) {
+          console.error('Login error', err.message)
+          message = err.message
+        }
+      }
+    } else {
+      form.classList.add('was-validated')
+      //focusOnFirstError(form)
+    }
+  }
+  
+  onMount(() => {
+    initializeGoogleAccounts()
+    renderGoogleButton()
+	})
+  
 </script>
 
-<div class="container">
-  
-  <h4>{message}</h4>
-  
-  <form method="POST" action="?/register">
-    <label for="email">Email</label>
-    <input id="email" type="email" placeholder="name@example.com" required>
-    <label for="password">Password</label>
-    <input id="password" type="password" placeholder="******" min-length="6" required>
-     <button type="submit">Submit</button>
-  </form>
-  
-</div>
+<svelte:head>
+  <title>Login Form</title>
+  <meta name='robots' content='noindex, nofollow'/>
+</svelte:head>
+
+<div id="googleButton"></div>
+
+
+<style>
+
+  #googleButton {
+    display: grid;
+    place-content: center;
+  }
+
+</style>

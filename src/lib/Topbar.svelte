@@ -5,7 +5,7 @@
 <div class="topbar">
   <a href="/" aria-current={$page.url.pathname === '/' ? 'page' : undefined}>Home</a> 
   <a href="/login" aria-current={$page.url.pathname === '/login' ? 'page' : undefined}>Login</a> 
-  <a href="/register" aria-current={$page.url.pathname === '/register' ? 'page' : undefined}>Register</a>
+  <!--a href="/register" aria-current={$page.url.pathname === '/register' ? 'page' : undefined}>Register</a-->
   
 </div>
 
