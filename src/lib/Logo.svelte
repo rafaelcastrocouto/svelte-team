@@ -1,18 +1,14 @@
-<script>
-  import logo from '../assets/weird.png';
-</script>
+<div class="logo">
+  <img src='/weird.png' alt="Weird Logo" class="logo_img"/>
+</div>
 
-<div class="logo"><img src={logo} alt="Weird Logo" class="logo_img"/></div>
 <h1 class="main_title">Weird Team!</h1>
 
-
 <style>
-
   .logo_img {
     height: 16rem;
     width: 16rem;
   }
-
   .main_title {
     color: var(--orange);
     text-transform: uppercase;
@@ -21,5 +17,4 @@
     margin-top: 0;
     margin-bottom: 2rem;
   }
-
 </style>

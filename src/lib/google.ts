@@ -10,7 +10,7 @@ export function renderGoogleButton() {
       type: 'standard',
       theme: 'filled_blue',
       size: 'large',
-      width: '367'
+      width: '360'
     })
   }
 }
@@ -32,6 +32,7 @@ export function initializeGoogleAccounts() {
   unsubscribe()
 
   async function googleCallback(response: google.accounts.id.CredentialResponse) {
+    
     const res = await fetch('/auth/google', {
       method: 'POST',
       headers: {
@@ -39,10 +40,11 @@ export function initializeGoogleAccounts() {
       },
       body: JSON.stringify({ token: response.credential })
     })
-  
+    
     if (res.ok) {
       const fromEndpoint = await res.json()
       loginSession.set(fromEndpoint.user) // update loginSession store
+      
       const { role } = fromEndpoint.user
 
       let referrer
@@ -52,9 +54,9 @@ export function initializeGoogleAccounts() {
       unsubscribe()
 
       if (referrer) return goto(referrer)
-      if (role === 'teacher') return goto('/teachers')
       if (role === 'admin') return goto('/admin')
-      if (location.pathname === '/login') goto('/') // logged in so go home
-    }
-  }
+      
+    } 
+    goto('/')
+  } 
 }

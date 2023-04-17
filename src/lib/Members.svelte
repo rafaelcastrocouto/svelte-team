@@ -1,12 +1,14 @@
 <script>
-  const orgs = ['spicylobstergames', 'fishfolk'/*, 'commune-os'*/];
+  import { config } from '$lib/config.js';
+
+  //const orgs = ['spicylobstergames', 'fishfolk'/*, 'commune-os'*/];
 
   async function githubJson (url) {
     const res = await fetch(url);
     const json = await res.json();
     return json;
   }
-
+  
   async function userData (username) {
     const user_url ='https://api.github.com/users/';
     const json = await githubJson(user_url+username);
@@ -14,7 +16,7 @@
     return json;
   }
   //const data = userData('rafaelcastrocouto');
-
+  
   async function userDataList (members) {
     const promises = members.map(userData);
     const json = await Promise.all(promises);
@@ -22,7 +24,7 @@
     return json;
   }
   //const data = userDataList(['orhun','rafaelcastrocouto','erlend-sh']);
-
+  
   async function orgData (orgname) {
     const org_url = 'https://api.github.com/orgs/';
     const json = await githubJson(org_url+orgname+'/members');
@@ -33,11 +35,12 @@
   
   async function orgDataList (org) {
     const teamJSON = await orgData(org);
+    //console.log(teamJSON)
     const list = teamJSON.map( (user) => user.login )
     return list;
   }
   //const data = orgDataList('fishfolk');
-
+  
   async function uniqueList (orgs) {
     const promises = orgs.map(orgDataList);
     const list = await Promise.all(promises);
@@ -45,15 +48,16 @@
     return unique;
   }
   //const data = uniqueList(['spicylobstergames', 'fishfolk']);
-
+  
   async function mergeTeams (orgs) {
     const everyone = await uniqueList(orgs);
     const json = await userDataList(everyone);
     //return JSON.stringify(json);
     return json
   }
+  
+  const data = mergeTeams(config.orgs);
 
-  const data = mergeTeams(orgs);
 </script>
 
 <div class="members">
@@ -97,16 +101,13 @@
 </div>
 
 <style>
-  
   .user_avatar {
     border-radius: 50%;
     margin: 3rem 0 0;
     height: 6rem;
     width: 6rem;
   }
-  
   .member p {
     margin: 0.5rem 0 0;
   }
-  
 </style>
