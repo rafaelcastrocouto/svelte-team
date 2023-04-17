@@ -1,10 +1,9 @@
 import { redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
+import { config } from '$lib/config.js'
 
 /** @type {import('./$types').PageServerLoad} */
 export const load: PageServerLoad = async ({ locals }) => {
-  
-  console.log('admin locals', locals)
   
 	const { user } = locals
   
@@ -13,7 +12,5 @@ export const load: PageServerLoad = async ({ locals }) => {
 		throw redirect(302, '/login?referrer=/admin')
 	}
 
-	return {
-		message: 'Admin-only content from server.'
-	}
+	return config
 }
