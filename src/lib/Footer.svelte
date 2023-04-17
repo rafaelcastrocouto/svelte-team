@@ -6,7 +6,7 @@
   Made with  <a href="https://kit.svelte.dev/" target="_blank">SvelteKit</a>, also powered by <a href="https://vitejs.dev/" target="_blank"></a>Vite!
 </p>
 
-<a href="https://svelte.dev" target="_blank"><img src={svelte} alt="Svelte Logo" class="footer_img"/></a>
+<img src={svelte} alt="Svelte Logo" class="footer_img"/>
 
 <p>
    Visit <a href="https://svelte.dev" target="_blank">svelte.dev</a> to learn how to build Svelte apps.

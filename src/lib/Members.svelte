@@ -97,13 +97,16 @@
 </div>
 
 <style>
+  
   .user_avatar {
     border-radius: 50%;
     margin: 3rem 0 0;
     height: 6rem;
     width: 6rem;
   }
+  
   .member p {
     margin: 0.5rem 0 0;
   }
+  
 </style>

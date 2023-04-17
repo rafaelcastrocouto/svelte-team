@@ -3,8 +3,10 @@
 </script>
 
 <div class="container">
+  
   <h4>{message}</h4>
-  <form>
+  
+  <form method="POST">
     <label for="name">Name</label>
     <input id="name" type="text" placeholder="Your Name" required>
     <label for="email">Email</label>
@@ -13,4 +15,5 @@
     <input id="password" type="password" placeholder="******" min-length="6" required>
      <button type="submit">Submit</button>
   </form>
+  
 </div>
