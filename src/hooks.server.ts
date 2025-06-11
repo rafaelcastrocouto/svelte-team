@@ -22,7 +22,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     await attachUserToRequestEvent(sessionId, event)
   }
   
-  if (!event.locals.user) cookies.delete('session')
+  if (!event.locals.user) /* @migration task: add path argument */ cookies.delete('session')
 
   const response = await resolve(event)
 

@@ -13,12 +13,12 @@ async function getGoogleUserFromJWT(token: string): Promise<Partial<User>> {
       audience: PUBLIC_GOOGLE_CLIENT_ID
     });
     const payload = ticket.getPayload()
-    if (!payload) throw error(500, 'Google authentication did not get the expected payload')
+    if (!payload) error(500, 'Google authentication did not get the expected payload');
     return payload
   } catch (err) {
     let message = ''
     if (err instanceof Error) message = err.message
-    throw error(500,`Google user could not be authenticated: ${message}`)
+    error(500,`Google user could not be authenticated: ${message}`);
   }
 }
 
@@ -48,11 +48,11 @@ export const POST: RequestHandler = async event => {
         'Set-Cookie': `session=${userSession.token}; Path=/; SameSite=Lax; HttpOnly;`}
       })
     } else {
-      throw error(401, message)
+      error(401, message);
     }
     
   } catch (err) {
     if (err instanceof Error) message = err.message
-    throw error(401, message)
+    error(401, message);
   }
 }

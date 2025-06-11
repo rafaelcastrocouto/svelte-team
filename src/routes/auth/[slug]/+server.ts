@@ -16,7 +16,7 @@ export const POST: RequestHandler = async (event) => {
     //case 'register':
     //  break
     default:
-      throw error(404, 'Invalid endpoint.')
+      error(404, 'Invalid endpoint.');
   }   
   /*
   const body = await event.request.json()

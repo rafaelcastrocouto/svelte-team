@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ locals }) => {
   
 	const authorized = ['admin']
 	if (!user || !authorized.includes(user.role)) {
-		throw redirect(302, '/login?referrer=/admin')
+		redirect(302, '/login?referrer=/admin');
 	}
 
 	return config
