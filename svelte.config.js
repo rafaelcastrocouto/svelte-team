@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
+//import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 // This config is ignored and replaced with one of the configs in the shared folder when a project is created.

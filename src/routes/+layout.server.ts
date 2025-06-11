@@ -8,3 +8,5 @@ export const load: LayoutServerLoad = ({ locals }) => {
   return { user }
   
 }
+
+export const prerender = true;
